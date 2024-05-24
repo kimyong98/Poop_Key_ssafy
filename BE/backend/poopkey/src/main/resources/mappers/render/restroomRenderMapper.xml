@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.render.dao.RestroomRenderDao">
+    <resultMap id="restroomRenderMap" type="RestroomRender">
+        <id property="restroomId" column="restroomId"/>
+        <id property="gender" column="gender"/>
+        <id property="floor" column="floor"/>
+        <id property="width" column="width"/>
+        <id property="height" column="height"/>
+        <collection property="list" ofType="StallRender" resultMap="stallRenderResultMap">
+            <id property="stallId" column="stallId"/>
+            <id property="status" column="status"/>
+            <id property="tissueStatus" column="tissueStatus"/>
+            <id property="content" column="content"/>
+            <id property="row" column="row"/>
+            <id property="col" column="col"/>
+            <id property="detailURL" column="detailURL"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="stallRenderResultMap" type="StallRender">
+        <result property="stallId" column="stallId"/>
+        <result property="status" column="status"/>
+        <result property="tissueStatus" column="tissueStatus"/>
+        <result property="content" column="content"/>
+        <result property="row" column="row"/>
+        <result property="col" column="col"/>
+        <result property="detailURL" column="detailURL"/>
+    </resultMap>
+    <select id="selectOne" parameterType="int" resultMap="restroomRenderMap">
+        SELECT r.restroom_id AS restroomId,
+        r.gender AS gender,
+        r.floor AS floor,
+        r.width AS width,
+        r.height AS height,
+        s.stall_id AS stallId,
+        s.status AS status,
+        IF(i.tissue &lt;= 5, '휴지없음', '') AS tissueStatus,
+        s.content AS content,
+        s.row AS `row`,
+        s.col AS col,
+        'Frontend URL' AS detailURL
+        FROM restroom r
+        INNER JOIN stall s
+        ON r.restroom_id = s.restroom_id
+        LEFT OUTER JOIN item i
+        ON i.stall_id = s.stall_id
+        WHERE r.restroom_id = #{restroomId}
+    </select>
+    <select id="selectList" resultMap="restroomRenderMap">
+        SELECT r.restroom_id AS restroomId,
+        r.gender AS gender,
+        r.floor AS floor,
+        r.width AS width,
+        r.height AS height,
+        s.stall_id AS stallId,
+        s.status AS status,
+        IF(i.tissue &lt;= 5, '휴지없음', '') AS tissueStatus,
+        s.content AS content,
+        s.row AS `row`,
+        s.col AS col,
+        'Frontend URL' AS detailURL
+        FROM restroom r
+        INNER JOIN stall s
+        ON r.restroom_id = s.restroom_id
+        LEFT OUTER JOIN item i
+        ON i.stall_id = s.stall_id
+        WHERE r.building_id = #{buildingId}
+        AND r.floor = #{floor}
+    </select>
+    <select id="findRestroomId" parameterType="long" resultType="int">
+        SELECT DISTINCT restroom_id AS restroomId
+        FROM stall
+        WHERE stall_id = #{stallId}
+    </select>
+</mapper>

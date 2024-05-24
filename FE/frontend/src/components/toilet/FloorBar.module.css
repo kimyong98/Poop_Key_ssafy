@@ -1,0 +1,94 @@
+/* FllorBar.css */
+.floorBar {
+  width: 15%;
+  padding: 10px;
+  order: 2;
+  max-height: 100%;
+  margin-right: 0;
+}
+
+.floorList {
+  overflow-y: auto;
+  /* Y축 스크롤 추가 */
+  height: 100%;
+}
+
+
+.floorItem_on {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+
+
+  width: 70%;
+  height: 10%;
+  margin: 10px 0px 10px 20px;
+  border-radius: 10px;
+  font-weight: bolder;
+
+  cursor: pointer;
+  color: white;
+
+  text-align: center;
+
+
+  background-color: #B35310;
+}
+
+.floorItem_off {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+
+
+  width: 70%;
+  height: 10%;
+  margin: 10px 0px 10px 20px;
+  border-radius: 10px;
+  font-weight: bolder;
+
+  cursor: pointer;
+  color: white;
+
+  text-align: center;
+
+
+  background-color: #dcb79c;
+}
+
+
+.floorCongestion {
+  display: flex;
+  flex-direction: row;
+
+  box-sizing: border-box;
+  padding-left: 3px;
+  padding-top: 3px;
+  height: 25%;
+}
+
+.floorCongestion div {
+  height: 100%;
+  width: 20%;
+  margin: 0% 3%
+}
+
+.floorText {
+  margin-top: 7%;
+}
+
+/* 스크롤바 디자인 */
+.floorList::-webkit-scrollbar {
+  width: 10px;
+}
+
+.floorList::-webkit-scrollbar-thumb {
+  background-color: #B35310;
+  border-radius: 10px;
+}
+
+.floorList::-webkit-scrollbar-track {
+  background-color: #dcb79c;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.render.dao.FloorCongestionDao">
+    <resultMap id="floorCongestionMap" type="FloorCongestion">
+        <id column="floor" property="floor"/>
+        <id column="URL" property="URL"/>
+        <collection property="list" ofType="Congestion" resultMap="congestionResultMap">
+            <id property="gender" column="gender"/>
+            <id property="congestion" column="congestion"/>
+        </collection>
+
+    </resultMap>
+    <resultMap id="congestionResultMap" type="Congestion">
+        <result property="gender" column="gender"/>
+        <result property="congestion" column="congestion"/>
+    </resultMap>
+    <select id="selectList" parameterType="int" resultMap="floorCongestionMap">
+        SELECT floor, 'Frontend URL' AS URL, gender, congestion
+        FROM restroom
+        WHERE building_id = #{buildingId}
+        ORDER BY floor
+    </select>
+
+</mapper>

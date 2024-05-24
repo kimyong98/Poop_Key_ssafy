@@ -1,0 +1,47 @@
+17:59:19 **** Incremental Build of configuration Debug for project esp01 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:143:74: warning: pointer targets in passing argument 1 of 'strlength' differ in signedness [-Wpointer-sign]
+  143 |               HAL_UART_Transmit(&huart3, (uint8_t *)atCommand, strlength(atCommand), 100);
+      |                                                                          ^~~~~~~~~
+      |                                                                          |
+      |                                                                          char *
+../Core/Src/main.c:55:28: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+   55 | uint32_t strlength(uint8_t str[]) {
+      |                    ~~~~~~~~^~~~~
+../Core/Src/main.c:120:11: warning: unused variable 'GotNull' [-Wunused-variable]
+  120 |   uint8_t GotNull[] = "I Got NULL\r\n";
+      |           ^~~~~~~
+../Core/Src/main.c:119:11: warning: unused variable 'getin' [-Wunused-variable]
+  119 |   uint8_t getin[] = "Getin\r\n";
+      |           ^~~~~
+../Core/Src/main.c:118:11: warning: unused variable 'forbreak' [-Wunused-variable]
+  118 |   uint8_t forbreak[] = "for break\r\n";
+      |           ^~~~~~~~
+../Core/Src/main.c:116:11: warning: unused variable 'AT' [-Wunused-variable]
+  116 |   uint8_t AT[] = "AT\r\n";
+      |           ^~
+../Core/Src/main.c:115:11: warning: unused variable 'box_count' [-Wunused-variable]
+  115 |   uint8_t box_count = 0U;
+      |           ^~~~~~~~~
+../Core/Src/main.c:114:11: warning: unused variable 'box' [-Wunused-variable]
+  114 |   uint8_t box[256];
+      |           ^~~
+../Core/Src/main.c:113:11: warning: unused variable 'temp' [-Wunused-variable]
+  113 |   uint8_t temp;
+      |           ^~~~
+arm-none-eabi-gcc -o "esp01.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\SSAFY\STM32CubeIDE\workspace_1.14.0\esp01\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="esp01.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: esp01.elf
+ 
+arm-none-eabi-size  esp01.elf 
+arm-none-eabi-objdump -h -S esp01.elf  > "esp01.list"
+   text	   data	    bss	    dec	    hex	filename
+   9532	     20	   1716	  11268	   2c04	esp01.elf
+Finished building: default.size.stdout
+ 
+Finished building: esp01.list
+ 
+
+17:59:20 Build Finished. 0 errors, 8 warnings. (took 753ms)
+

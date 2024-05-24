@@ -1,0 +1,35 @@
+16:54:36 **** Incremental Build of configuration Debug for project esp8266test2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Drivers/UserLib/Src/esp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/SSAFY/STM32CubeIDE/workspace_1.14.0/esp8266test2/Drivers/UserLib/Inc" -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/UserLib/Src/esp.d" -MT"Drivers/UserLib/Src/esp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/UserLib/Src/esp.o"
+../Drivers/UserLib/Src/esp.c: In function 'drv_esp_test_command':
+../Drivers/UserLib/Src/esp.c:303:16: warning: implicit declaration of function 'start_esp_server' [-Wimplicit-function-declaration]
+  303 |             if(start_esp_server() != 0)
+      |                ^~~~~~~~~~~~~~~~
+../Drivers/UserLib/Src/esp.c:311:40: warning: '
+   ' directive writing 2 bytes into a region of size between 1 and 64 [-Wformat-overflow=]
+  311 |             sprintf((char *)at_cmd, "%s\r\n", command);
+      |                                        ^~~~
+../Drivers/UserLib/Src/esp.c:311:13: note: 'sprintf' output between 3 and 66 bytes into a destination of size 64
+  311 |             sprintf((char *)at_cmd, "%s\r\n", command);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+At top level:
+../Drivers/UserLib/Src/esp.c:149:12: warning: 'esp_send_messge' defined but not used [-Wunused-function]
+  149 | static int esp_send_messge(int client_id, char *message, char *response, uint16_t *length)
+      |            ^~~~~~~~~~~~~~~
+../Drivers/UserLib/Src/esp.c:20:16: warning: 'client_list' defined but not used [-Wunused-variable]
+   20 | static uint8_t client_list[MAX_ESP_CLIENT_NUM];
+      |                ^~~~~~~~~~~
+arm-none-eabi-gcc -o "esp8266test2.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\SSAFY\STM32CubeIDE\workspace_1.14.0\esp8266test2\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="esp8266test2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: esp8266test2.elf
+ 
+arm-none-eabi-size  esp8266test2.elf 
+arm-none-eabi-objdump -h -S esp8266test2.elf  > "esp8266test2.list"
+   text	   data	    bss	    dec	    hex	filename
+  14832	    112	   4120	  19064	   4a78	esp8266test2.elf
+Finished building: default.size.stdout
+ 
+Finished building: esp8266test2.list
+ 
+
+16:54:36 Build Finished. 0 errors, 4 warnings. (took 810ms)
+

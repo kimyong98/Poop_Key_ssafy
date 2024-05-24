@@ -1,0 +1,133 @@
+/* mailBox 전체 container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* mailBox 왼쪽 페이지 container */
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 0% 0% 4%;
+  
+  width: 50%;
+  height: 100%;
+}
+
+/* Home 로고 */
+.logo {
+  object-fit: contain;
+  cursor: pointer;
+  width: 100%;
+  height: 35%;
+}
+
+/* mailBox 페이지 안내 텍스트 */
+.text {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+  color: #B35310;
+}
+
+
+/* mailBox 오른쪽 페이지 container*/
+.mailContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  padding: 0% 4% 0%;
+  width: 50%;
+  height: 100%;
+}
+
+
+/* 알림 테이블 */
+.table {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #f1ebe3;
+  border: 4px solid #B35310;
+  border-radius: 25px;
+  width: 100%;
+  padding: 25px 20px;
+}
+
+.rowBox {
+  border-bottom: 2px solid #ccc;
+}
+
+.headRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px 10px;
+
+  color: #a64f10;
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.cell {
+  flex: 1;
+  text-align: center;
+}
+
+.cellContent {
+  flex: 3;
+  text-align: center;
+}
+
+/* 페이지네이션 */
+
+.pagination {
+  margin-top: 15px;
+  color: white;
+}
+
+/* 상세위치 */
+.state_content {
+  display: flex;
+  justify-content: start;
+  justify-items: center;
+  align-items: center;
+
+  width: 60%;
+  height: 40px;
+  padding-left: 25px;
+}
+
+/* 상세위치 이미지 */
+.contentImg {
+  width: 18px;
+  height: 18px;
+  margin-left: 20px;
+  margin-right: 15px;
+}
+
+/* 상세위치 텍스트 */
+.contentText {
+  font-size: 13px;
+  font-weight: bolder;
+  color: #646363;
+  cursor: pointer;
+}

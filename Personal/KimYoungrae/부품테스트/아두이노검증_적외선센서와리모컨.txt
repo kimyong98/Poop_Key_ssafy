@@ -1,0 +1,35 @@
+아두이노 리모컨
+
+IRremote라이브러리 설치 후 
+SimpleReceiver 예제 사용
+
+
+[결과]
+Protocol=NEC Address=0x0 Command=0x42 Repeat gap=38950us
+
+Protocol=NEC Address=0x0 Command=0x52 Raw-Data=0xAD52FF00 32 bits LSB first
+Send with: IrSender.sendNEC(0x0, 0x52, <numberOfRepeats>);
+
+Protocol=NEC Address=0x0 Command=0x52 Repeat gap=38950us
+
+Protocol=NEC Address=0x0 Command=0x4A Raw-Data=0xB54AFF00 32 bits LSB first
+Send with: IrSender.sendNEC(0x0, 0x4A, <numberOfRepeats>);
+
+Protocol=NEC Address=0x0 Command=0x4A Repeat gap=38950us
+
+Protocol=NEC Address=0x0 Command=0x42 Raw-Data=0xBD42FF00 32 bits LSB first
+Send with: IrSender.sendNEC(0x0, 0x42, <numberOfRepeats>);
+
+Protocol=NEC Address=0x0 Command=0x42 Repeat gap=38950us
+
+Protocol=NEC Address=0x0 Command=0x52 Raw-Data=0xAD52FF00 32 bits LSB first
+Send with: IrSender.sendNEC(0x0, 0x52, <numberOfRepeats>);
+
+Protocol=NEC Address=0x0 Command=0x52 Repeat gap=38950us
+
+Protocol=NEC Address=0x0 Command=0x4A Raw-Data=0xB54AFF00 32 bits LSB first
+Send with: IrSender.sendNEC(0x0, 0x4A, <numberOfRepeats>);
+
+Protocol=NEC Address=0x0 Command=0x4A Repeat gap=38950us
+
+Protocol=NEC Address=0x0 Command=0x4A Repeat gap=94800us

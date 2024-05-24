@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LibraryMaker/Drivers/UserLib/Src/mlx&apos; to &apos;mlx.c&apos;" description="Rename resource &apos;mlx&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Drivers/UserLib/Src/mlx" name="mlx.c" stamp="1706155178973" updateReferences="true"/>
+</session>

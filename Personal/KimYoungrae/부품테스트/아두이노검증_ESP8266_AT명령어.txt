@@ -1,0 +1,35 @@
+아두이노 ESP8266 AT통신(UART잘 연결된건가) 확인
+
+[핀] VCC 3.3v / GND GND / ESP측 RX 아두이노측 3(TX) / ESP측 TX 아두이노측 2(RX)
+
+[코드] 
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(2,3); //RX, TX
+
+void setup() {
+   Serial.begin(9600);
+   mySerial.begin(9600);
+}
+
+void loop() {
+if(mySerial.available())
+{
+  Serial.write(mySerial.read());
+}
+if(Serial.available())
+{
+  mySerial.write(Serial.read());
+}
+}
+
+
+시리얼 모니터에서 Both NL & CR / 9600 baud 설정
+
+[결과]
+11:48:01.405 -> AT
+11:48:01.405 -> 
+11:48:01.405 -> OK
+11:57:24.327 -> AT
+11:57:24.371 -> 
+11:57:24.371 -> OK
+

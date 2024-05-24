@@ -1,0 +1,47 @@
+/*
+ * servo.c
+ *
+ *  Created on: Jan 25, 2024
+ *      Author: SSAFY
+ */
+
+
+/*
+ * servo motor 1 / 2
+ * TIM2_ch1 and TIM2_ch2
+ *
+ *
+ * Function
+ *
+ * void servo_cover_push(void)
+ * void servo_cover_pull(void)
+ *
+ * void servo_water_push(void)
+ * void servo_water_pull(void)
+ *
+ */
+
+#include "servo.h"
+
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim2;
+
+void servo_init(void) {
+	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
+}
+
+void servo_cover_push(void) {
+	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, PUSH);
+}
+void servo_cover_pull(void) {
+	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, PULL);
+}
+
+
+void servo_water_push(void) {
+	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, PUSH);
+}
+void servo_water_pull(void){
+	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, PULL);
+}

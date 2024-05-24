@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.main.dao.StallUpdateDao">
+    <update id="update" parameterType="StallUpdate">
+        UPDATE stall SET status = #{state}
+        <if test="state==3">
+            ,maintaining=1
+        </if>
+        <if test="state==0">
+            ,maintaining=0
+        </if>
+        WHERE stall_id = #{stallId}
+    </update>
+</mapper>

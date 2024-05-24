@@ -1,0 +1,8 @@
+../Drivers/UserLib/Src/module_control.c:17:6:HAL_TIM_PeriodElapsedCallback	2
+../Drivers/UserLib/Src/module_control.c:24:10:GetMicroSec	3
+../Drivers/UserLib/Src/module_control.c:35:9:sensing	1
+../Drivers/UserLib/Src/module_control.c:40:6:turnLED	1
+../Drivers/UserLib/Src/module_control.c:45:6:motor_start	1
+../Drivers/UserLib/Src/module_control.c:49:6:runMotor	4
+../Drivers/UserLib/Src/module_control.c:56:7:getDistance	5
+../Drivers/UserLib/Src/module_control.c:86:7:getIRTemperature	1

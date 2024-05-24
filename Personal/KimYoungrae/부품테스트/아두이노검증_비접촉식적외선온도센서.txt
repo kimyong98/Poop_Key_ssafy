@@ -1,0 +1,19 @@
+비접촉식 적외선 온도선서
+
+[라이브러리] Adafruit MLX90614 Library 2.1.5 (dependency all download)
+[예제] mlxtest
+[핀] Vcc 5V / GND GND / SDA A4 / SCL A5
+
+
+[결과]
+// 대기
+Ambient = 31.15*C	Object = 26.99*C
+Ambient = 88.07*F	Object = 80.58*F
+
+// 대기 -> 손
+Ambient = 31.17*C	Object = 31.71*C
+Ambient = 88.11*F	Object = 89.08*F
+
+// 손
+Ambient = 31.17*C	Object = 34.45*C
+Ambient = 88.11*F	Object = 94.01*F

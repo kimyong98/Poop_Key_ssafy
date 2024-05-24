@@ -1,0 +1,22 @@
+1. 화장실 태그에 onCLick 추가하기
+2. 마우스 cursor 포인터 넣어주기
+3. onCLick시 라우터 이동과 함께
+4. 화장실 칸에 id와 일치하는 정보만 보내주기
+
+
+화장실 id + content
+
+
+select 폼과 input 폼에서 데이터를 생성하고 
+onSubmit를 통해 제출을 막은다음
+handleLoginSubmit
+handleDeclarationSubmit 이벤트 핸들러 함수안에
+axios를 async와 await를 이용해서 제어한다. -> post, put
+
+get, delete는 알아서 받은다음 상태관리 할 수 있는 변수에 저장한다
+
+context API 마스터하기 -> 예제코드 따오기
+
+----------------------------
+style 
+box-sizing

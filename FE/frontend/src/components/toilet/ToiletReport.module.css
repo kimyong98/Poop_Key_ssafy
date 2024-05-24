@@ -1,0 +1,100 @@
+/* report 전체 container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* report 왼쪽 페이지 container */
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 0% 0% 4%;
+  
+  width: 50%;
+  height: 100%;
+}
+
+/* report 로고 */
+.logo {
+  object-fit: contain;
+  width: 100%;
+  height: 35%;
+}
+
+/* report 페이지 안내 텍스트 */
+.text {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+  color: #B35310;
+}
+
+/* report 오른쪽 페이지 container*/
+.reportContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 0% 5% 5%;
+  width: 50%;
+  height: 100%;
+}
+
+.reportType {
+  color: #B35310;
+  font-size: 17px;
+  font-weight: bolder;
+  margin: 5% 0%;
+}
+
+/* 신고사유 select */
+.report_list_wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 2%;
+  margin-bottom: 15px;
+}
+
+/* 신고내용 textarea */
+.report_content {
+  width: 100%;
+  height: 75px;
+  box-sizing: border-box;
+  resize: vertical;
+
+  border-radius: 10px;
+  border: solid 3px #B35310;
+  background-color: #efefef;
+
+  padding: 10px;
+}
+
+/* report 버튼 container */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  margin-top: 7%;
+}
+
+/* 제출 및 취소 버튼 */
+.button {
+  padding: 3% 5%;
+  background-color: chocolate;
+  border-radius: 25px;
+
+  font-weight: bolder;
+  color: white;
+
+  cursor: pointer;
+}

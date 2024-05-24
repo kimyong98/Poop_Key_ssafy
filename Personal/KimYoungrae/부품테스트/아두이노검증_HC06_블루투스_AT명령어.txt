@@ -1,0 +1,38 @@
+아두이노 HC-06 블루투스 모듈 AT명령어 확인
+
+[핀] 모듈 아두이노 / VCC 5v / GND GND / TX 2 / RX 3
+[코드]
+#include <SoftwareSerial.h>                // Serial 통신을 하기 위해 선언
+SoftwareSerial BTSerial(2, 3);             
+void setup()
+{
+    Serial.begin(9600);                          
+
+    BTSerial.begin(9600);                     
+}
+
+void loop() 
+{
+    if(BTSerial.available())                     // BTSerial에 입력이 되면
+
+    Serial.write(BTSerial.read());           // BTSerial에 입력된 값을 시리얼 모니터에 출력
+
+    if(Serial.available())                          // 시리얼 모니터에 입력이 되면
+
+    BTSerial.write(Serial.read());           // 그 값을 BTSerial에 출력
+}
+
+
+[시리얼 모니터 설정]
+Both NL & CR / 9600 baud
+
+
+
+[결과] (AT를 입력으로 넣었을 경우 OK한 줄 이 나옴)
+12:09:06.032 -> OK
+12:09:14.487 -> OK
+12:09:15.646 -> OK
+12:09:16.360 -> OK
+12:09:16.892 -> OK
+12:09:17.436 -> OK
+12:09:17.963 -> OK

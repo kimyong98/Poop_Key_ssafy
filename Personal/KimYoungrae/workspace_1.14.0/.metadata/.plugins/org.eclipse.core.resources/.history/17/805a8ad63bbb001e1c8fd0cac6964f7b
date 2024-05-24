@@ -1,0 +1,28 @@
+/*
+ * sonar.h
+ *
+ *  Created on: Jan 25, 2024
+ *      Author: Kim YR
+ */
+
+#ifndef USERLIB_INC_SONAR_H_
+#define USERLIB_INC_SONAR_H_
+
+#include "stm32f1xx_hal.h"
+// #include "stm32f1xx_hal_tim.h"
+
+
+float get_distance(void);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+uint32_t GetMicroSec(void);
+void sonar_timer_init(void);
+float get_distance(void);
+
+#endif /* USERLIB_INC_SONAR_H_ */
+
+
+
+
+
+
+

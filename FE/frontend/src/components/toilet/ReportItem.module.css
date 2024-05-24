@@ -1,0 +1,35 @@
+/* EmotionItem */
+.ReportItem {
+  cursor: pointer;
+  border-radius: 25px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+
+  color: #89410d;
+}
+
+.ReportItem img {
+  width: 50%;
+  object-fit: fill;
+  margin-bottom: 10px;
+}
+
+.ReportItem_off {
+  background-color: #efefef;
+}
+
+.ReportItem_on {
+  background-color: #eec584;
+  color: white;
+}
+
+.text {
+  font-weight: bolder;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.main.dao.RestroomDao">
+    <select id="selectList" parameterType="int" resultType="Restroom">
+        SELECT * FROM restroom
+        WHERE building_id = #{buildingId}
+        ORDER BY floor
+    </select>
+    <insert id="insertOne" parameterType="RestroomInfoInsert">
+        INSERT INTO restroom (building_id, floor, gender, height, width)
+        VALUES (#{buildingId}, #{floor}, #{gender}, #{height}, #{width})
+    </insert>
+    <update id="updateRestroomClean" parameterType="int">
+        UPDATE restroom
+        SET cleaning=ABS(cleaning-1), last_cleaning_time=CURRENT_TIMESTAMP
+        WHERE restroom_id = #{restroomId}
+    </update>
+</mapper>

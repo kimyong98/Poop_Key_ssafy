@@ -1,0 +1,28 @@
+/*
+ * LED.c
+ *
+ *  Created on: Jan 25, 2024
+ *      Author: Kim YR
+ */
+
+
+#include "LED.h"
+
+LED led[12] = {
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+		{0U, 0U},
+};
+
+void led_light(uint8_t select, uint8_t state) {
+
+}

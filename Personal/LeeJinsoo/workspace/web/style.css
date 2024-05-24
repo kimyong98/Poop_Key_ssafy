@@ -1,0 +1,44 @@
+.grid-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* 화면이 좁아질 경우 줄바꿈 */
+}
+
+.grid-container {
+    margin: 10px;
+    border: 2px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    display: inline-block; /* 컨테이너가 내용물에 맞게 크기 조정 */
+}
+
+.row {
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+.square {
+    width: calc(20% - 10px); /* 네모의 너비 조정 */
+    padding-bottom: calc(20% - 10px); /* 네모의 높이를 너비와 동일하게 설정 */
+    background-color: blue;
+    border: 2px solid black;
+    margin-right: 5px;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    visibility: visible; /* 추가: 네모가 기본적으로 보이도록 설정 */
+    min-width: 50px; /* 네모의 최소 너비 설정 */
+    min-height: 50px; /* 네모의 최소 높이 설정 */
+}
+
+.hidden {
+    visibility: hidden; /* 추가: 네모를 숨기되 공간은 유지 */
+}
+
+@media (max-width: 600px) {
+    .square {
+        width: calc(40% - 10px); /* 화면이 작을 때 네모의 너비 조정 */
+        padding-bottom: calc(40% - 10px); /* 화면이 작을 때 높이 조정 */
+        min-width: 60px; /* 화면이 작을 때 네모의 최소 너비 조정 */
+        min-height: 60px; /* 화면이 작을 때 네모의 최소 높이 조정 */
+    }
+}

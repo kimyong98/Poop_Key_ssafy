@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.main.dao.MasterDao">
+    <update id="delete" parameterType="String">
+        UPDATE master SET
+        password = 'deleted',
+        name = 'deleted',
+        phone = 'deleted',
+        device_id = 'deleted',
+        email = 'deleted',
+        profile = NULL,
+        address = 'deleted',
+        deleted_date = CURRENT_TIMESTAMP
+        WHERE email = #{email}
+    </update>
+</mapper>

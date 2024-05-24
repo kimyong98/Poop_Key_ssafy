@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.main.dao.StallSensorUpdateDao">
+    <update id="updateOccupied" parameterType="long">
+        UPDATE stall SET
+        status = 1,
+        closed = 1,
+        used_number_after_cleaning = used_number_after_cleaning+1
+        WHERE stall_id = #{stallId}
+    </update>
+    <update id="updateVacant" parameterType="long">
+        UPDATE stall SET
+        last_used_time = CURRENT_TIMESTAMP,
+        status = 0,
+        closed = 0
+        WHERE stall_id = #{stallId}
+    </update>
+    <update id="updateBreak" parameterType="long">
+        UPDATE stall SET
+        toilet_status = 1,
+        status = 2
+        WHERE stall_id = #{stallId}
+    </update>
+</mapper>

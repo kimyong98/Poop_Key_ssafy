@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.main.dao.StallDao">
+    <select id="selectOne" parameterType="long" resultType="Stall">
+        SELECT stall_id AS stallId, last_used_time AS lastUsedTime,
+        used_number_after_cleaning AS usedNumberAfterCleaning FROM stall
+        WHERE stall_id = #{stallId}
+    </select>
+    <!-- 관리자 점검중 update할 때 쓰는 게 아니다-->
+    <update id="updateOne" parameterType="Stall">
+        UPDATE stall SET status = #{status}
+        WHERE stall_id = #{stallId};
+    </update>
+</mapper>

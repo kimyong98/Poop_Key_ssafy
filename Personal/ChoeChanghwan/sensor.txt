@@ -1,0 +1,40 @@
+void Water_Tissue(TS stall[i])
+{
+	float distance = Get_Distance(stall.sonar_water_tissue);
+	if(distance < threshold) {
+		Moter(stall.servo_water_tissue, digree);
+		HAL_Delay(1000);
+		Moter(stall.servo_water_tissue, digree);
+	}
+}
+
+void Magnetic(TS stall[i])
+{
+	bool current = Sensing(stall[i], magnetic);
+	if(current == true) {
+		LED(SI led, true);
+		if(stall[i].is_occupied == true) {
+		}
+		else {
+			stall[i].is_occupied = true;
+			Send(stall[i].is_occupied);
+			occupied_stall++; // 전체 화장실 변수
+		}
+	}
+	else {
+		LED(SI led, false);
+		if(stall[i].is_occupied == true) {
+			if((GetTick()/(1000*60)%60) - stall[i].Last_open_Time > 5) { // GetTick()/(1000*60)%60 ms -> min
+				stall[i].is_occupied = false;
+				Send(stall[i].is_occupied);
+				stall[i].Last_open_Time = -1; // min값인듯?
+				occupied_stall--;
+			}
+			else {
+				stall[i].Last_open_Time = GetTick();
+			}
+		}
+	}
+	if(occupied_stall==MAX_STALL) // 전체 화장실이 다 찼으면 라즈베리 파이로 전송
+		Send(true);
+}

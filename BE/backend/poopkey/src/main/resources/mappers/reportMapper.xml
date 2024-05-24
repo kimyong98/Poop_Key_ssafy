@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.main.dao.ReportDao">
+    <insert id="insert" parameterType="Report" keyProperty="reportId" useGeneratedKeys="true">
+        INSERT INTO report (report_id, stall_id, content, user_report_reason)
+        VALUES (#{reportId}, #{stallId}, #{content}, #{userReportReason})
+    </insert>
+    <select id="selectList" parameterType="int" resultType="Report">
+        SELECT *
+        FROM report rp
+        INNER JOIN stall s
+        ON s.stall_id = rp.stall_id
+        INNER JOIN restroom res
+        ON res.restroom_id = s.restroom_id
+        INNER JOIN building b
+        ON b.building_id = res.building_id
+        INNER JOIN master m
+        ON m.master_id = b.building_id
+        WHERE m.master_id = #{masterId}
+    </select>
+    <update id="update" parameterType="long">
+        UPDATE report SET checked = 1
+        WHERE report_id = #{reportId}
+    </update>
+    <select id="selectMasterId" parameterType="Report" resultType="int">
+        SELECT DISTINCT m.master_id AS masterId
+        FROM master m
+        INNER JOIN building b
+        ON m.master_id = b.master_id
+        INNER JOIN restroom res
+        ON res.building_id = b.building_id
+        INNER JOIN stall s
+        ON s.restroom_id = res.restroom_id
+        INNER JOIN report rep
+        ON rep.stall_id = s.stall_id
+        WHERE rep.stall_id = #{stallId}
+    </select>
+    <!-- reportId는 고유값 DISTINCT 필요 없음 -->
+    <select id="convertReportIdToMasterId" parameterType="long" resultType="int">
+        SELECT DISTINCT m.master_id AS masterId
+        FROM master m
+        INNER JOIN building b
+        ON m.master_id = b.master_id
+        INNER JOIN restroom res
+        ON res.building_id = b.building_id
+        INNER JOIN stall s
+        ON s.restroom_id = res.restroom_id
+        INNER JOIN report rep
+        ON rep.stall_id = s.stall_id
+        WHERE rep.report_id = #{reportId}
+    </select>
+</mapper>

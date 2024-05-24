@@ -1,0 +1,10 @@
+13:00:17 **** Incremental Build of configuration Debug for project mlx ****
+make -j12 all 
+arm-none-eabi-size  mlx.elf 
+   text	   data	    bss	    dec	    hex	filename
+  24184	    476	   2060	  26720	   6860	mlx.elf
+Finished building: default.size.stdout
+ 
+
+13:00:17 Build Finished. 0 errors, 0 warnings. (took 319ms)
+

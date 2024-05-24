@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.poopkey.application.main.dao.StatisticSensorUpdateDao">
+    <update id="updateOccupied" parameterType="long">
+        UPDATE statistic SET
+        used_number = used_number+1
+        WHERE stall_id = #{stallId}
+    </update>
+    <update id="updateBreak" parameterType="long">
+        UPDATE statistic SET
+        break_number = break_number+1
+        WHERE stall_id = #{stallId}
+    </update>
+    <update id="updateTissue">
+        UPDATE statistic
+        INNER JOIN item
+        ON item.stall_id = statistic.stall_id
+        SET
+        statistic.tissue_change_number = statistic.tissue_change_number + IF(#{tissue}>item.tissue, 1, 0)
+        WHERE statistic.stall_id = #{stallId}
+<!--        현재 들어온 tissue값이 이미 있는 DB값보다 크다면 그때 하나 카운트 올려주면 끝-->
+    </update>
+</mapper>

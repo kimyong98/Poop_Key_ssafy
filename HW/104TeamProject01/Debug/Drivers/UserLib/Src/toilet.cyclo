@@ -1,0 +1,8 @@
+../Drivers/UserLib/Src/toilet.c:38:6:checkMagnetic	6
+../Drivers/UserLib/Src/toilet.c:86:6:checkTissueAmount	3
+../Drivers/UserLib/Src/toilet.c:114:6:checkWaterTissue	3
+../Drivers/UserLib/Src/toilet.c:129:6:untactIR	4
+../Drivers/UserLib/Src/toilet.c:145:6:flushToilet	5
+../Drivers/UserLib/Src/toilet.c:165:6:checkBroken	6
+../Drivers/UserLib/Src/toilet.c:202:6:checkCongest	7
+../Drivers/UserLib/Src/toilet.c:225:6:initStalls	1
