@@ -1,10 +1,17 @@
 # STM32 
+Date(Latest): 2024-05-29
+Author: 김영래
+
+
 
 ## 목차
 
+
+
+
 <br><br>
 
-## printf()
+## 1. printf()
 
 디버깅을 위해서 출력은 필수이다.
 
@@ -36,7 +43,7 @@
 - 이제 코드를 generate시킨다.
 
 - main.c에서 
-```
+```c
 /* USER CODE BEGIN Includes */
 #include<stdio.h>
 /* USER CODE END Includes */
@@ -94,7 +101,7 @@ Setup > Serial Port
 
 <br><br><br>
 
-## 펌웨어 단에서 모터 제어하기
+## 2. 모터 제어하기
 
 <br>
 
@@ -146,7 +153,7 @@ TIM2는 아래 이미지와 같이 APB1의 클럭을 기준으로 하는걸 알 
 ### 코드
 config를 통해 generate된 주소명과 API를 이용하여 모터를 제어한다.
 
-'''
+'''c
 HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
 '''
 
@@ -176,7 +183,7 @@ HAL_Delay(500);
 
 <br><br><br><br>
 
-## 초음파 센서 작동
+## 3. 초음파 센서
 들어가기 앞서 초음파 센서 작동원리에 대해 의견이 달라서 정리하였다.
 - Trigger로 부터 초음파를 발사하는 시점부터 Echo로 초음파가 들어오는 시점의 시간
 - Trigger로 부터 초음파를 발사하고, Echo로 초음파가 들어오기 시작하는 시점부터 더 이상 초음파가 들어오지 않는 시점의 시간
@@ -185,7 +192,7 @@ HAL_Delay(500);
 
 기존 코드(printf()까지)에서 이어서 시작한다.
 
-```
+```c
 
 (중략)
 
@@ -290,7 +297,7 @@ Tick이란 시스템에 있어서 시간 단위이며, 아래 함수로 부터 �
 - HAL_InitTick(TICK_INT_PRIORITY)
 Tick Interrupt의 주기를 설정한다. 
 
-```
+```c
 
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
 	  if (HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 100000) == 0) {
@@ -317,7 +324,7 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
 ### 함수를 통한 코드
 /* USER CODE BEGIN WHILE */ 부터  /* USER CODE END 3 */ 까지
 
-```
+```c
 
 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, RESET);
 HAL_Delay(5);
@@ -330,7 +337,7 @@ HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, RESET);
 Trigger로 부터 초음파를 20 Tick동안 쏜다.
 
 
-```
+```c
 
 st = HAL_GetTick();
 while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9)==GPIO_PIN_RESET);
@@ -398,12 +405,58 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
 
 
 <br>
+<br>
+<br>
+
+
+## 4. 초음파 개정
+
+기존 초음파는 Tick(ms)단위여서 오류가 많았고,
+
+그나마 찾았던 해결방법은 Tick Interrupt의 주기를 짧게 바꾸는 것이었다.
+
+다만, 문제가 있다. Tick Interrupt의 주기를 짧게 바꾸면 main내 코드들 (일반 Task, Thread)가 작동하는데 어려움이 있다.
+
+여기서 Tick Interrupt를 하는 기준이 있다는 점에서 영감을 얻어 아래와 같은 코드를 추가했다.
+
+```c
+uint32_t overflows = 0U;
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) { // 제네레이트 없음
+	if(htim->Instance == TIM1) {
+		overflows++;
+	}
+}
+
+
+uint32_t GetMicroSec(void){ // 제네레이트 없음
+	uint32_t count = __HAL_TIM_GET_COUNTER(&htim1);
+	uint32_t overflow = overflows;
+	if (__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_UPDATE) && (count < 0x8000)) {
+	        overflow++;
+	}
+
+	return(overflow << 16) + count;
+}
+```
+
+Tick 자체의 접근은 어려움이 있어서 timer를 기준으로 하였다.
+
+__HAL_TIM_GET_COUNTER(&htim1)를 이용해 클럭 수를 가져오고 
+
+HAL_TIM_PeriodElapsedCallback()를 이용해 1ms마다 기록한다.
+
+마지막으로 GetMicroSec()으로 클럭 단위로 가져온다.
+
+여기서 prescale로 8, callback 기준을 1000-1 으로 했기 때문에 
+결과적으론 1us 단위로 측정이 가능하다. 
+
+prescale을 안 했다면 0.125us 단위로 측정이 가능하다. (물론 이 정도로 자세할 필요는 없어 깔끔하게 /8하였다)
 
 
 
 
-
- ## 타이머
+## 타이머
 
 TIM1을 기준으로 작성함. (8MHz)
 
@@ -417,7 +470,7 @@ TIM1을 기준으로 작성함. (8MHz)
 
 
 
- ```
+ ```c
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
