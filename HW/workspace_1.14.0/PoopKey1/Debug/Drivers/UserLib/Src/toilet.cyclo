@@ -1,0 +1,6 @@
+../Drivers/UserLib/Src/toilet.c:13:6:checkMagnetic	5
+../Drivers/UserLib/Src/toilet.c:47:6:untactIR	3
+../Drivers/UserLib/Src/toilet.c:59:6:flushToilet	2
+../Drivers/UserLib/Src/toilet.c:74:6:checkBroken	4
+../Drivers/UserLib/Src/toilet.c:93:6:checkTissueAmount	3
+../Drivers/UserLib/Src/toilet.c:109:6:checkWaterTissue	2

@@ -1,0 +1,6 @@
+../Drivers/UserLib/Src/toilet.c:13:6:checkMagnetic	16	static
+../Drivers/UserLib/Src/toilet.c:47:6:untactIR	96	static
+../Drivers/UserLib/Src/toilet.c:59:6:flushToilet	8	static
+../Drivers/UserLib/Src/toilet.c:74:6:checkBroken	88	static
+../Drivers/UserLib/Src/toilet.c:93:6:checkTissueAmount	16	static
+../Drivers/UserLib/Src/toilet.c:109:6:checkWaterTissue	88	static
